@@ -1,12 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../styles/home.module.css";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
-export default function AnimalCard({ animal }) {
+export default function AnimalCard({ animal, level }) {
+  const router = useRouter();
   const [isLocked, setIsLocked] = useState(true);
 
-  const handleUnlock = () => {
-    setIsLocked(false);
+  useEffect(() => {
+    setIsLocked(animal.isLocked);
+  }, [animal]);
+
+  const handleClick = () => {
+    // 如果 isLocked 就去破關
+    if (isLocked) {
+      router.push(`/${level}`);
+    } else {
+      // 如果 !isLocked 就去相機
+      router.push(`/camera${level}`);
+    }
   };
 
   return (
@@ -14,7 +26,7 @@ export default function AnimalCard({ animal }) {
       <div
         className={styles.animal_card}
         style={{ backgroundImage: `url(${animal.backgroundImage})` }}
-        onClick={handleUnlock}
+        onClick={handleClick}
       >
         {isLocked && (
           <>

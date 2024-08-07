@@ -1,0 +1,80 @@
+.container {
+  width: 100svw;
+  height: 100svh;
+  padding: 24px;
+  background-color: #ffd280;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  justify-content: center;
+}
+
+/* 提示編號 */
+.title {
+  background-color: #fffb2c;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: darkgreen;
+  border: 2px solid white;
+  font-size: 1.5rem;
+}
+
+/* 問題 */
+.question {
+  padding: 24px 0;
+  font-size: 1.2rem;
+  color: rgb(82, 43, 43);
+}
+
+/* 確認框 */
+.confirm_container {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0px 0px 10px #d8bd8a;
+}
+
+.confirm {
+  text-align: center;
+}
+
+.button_wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.button {
+  font-size: 18px;
+  padding: 8px 16px;
+  background-color: #ff961e;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+  letter-spacing: 0.2rem;
+}
+
+.button:last-child {
+  background-color: #b5b5b5;
+}
+
+/* 提示框 */
+.hint_container {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0px 0px 10px #d8bd8a;
+}
+
+.button_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}

@@ -1,11 +1,14 @@
 import Head from "next/head";
 import styles from "../styles/home.module.css";
-import Button from "@/components/Button";
+import Button from "../components/button";
 import Image from "next/image";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Nickname() {
+  // 暱稱狀態
   const [nickname, setNickname] = useState("");
+  // 提交、setItem
   const handleGoClick = (e) => {
     if (nickname.trim() === "") {
       e.preventDefault();
@@ -32,7 +35,7 @@ export default function Nickname() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.container_nickname}>
+      <div className={styles.container}>
         <div className={styles.container_circle}>
           {/* decoration */}
           <div className={styles.stars}>
@@ -65,16 +68,18 @@ export default function Nickname() {
               onChange={(e) => setNickname(e.target.value)}
             />
           </div>
+
           {/* checkbox */}
           <div className={styles.checkbox_wrapper}>
-            <input type="checkbox" name="" id="" />
+            <input type="checkbox" name="" id="toggleIsChecked" />
             您同意<span>使用者條款</span>與<span>隱私權政策</span>
           </div>
+
           {/* button */}
           <div className={styles.button_container}>
-            <Button href="intro1" onClick={handleGoClick}>
-              GO!
-            </Button>
+            <Link href="/intro1">
+              <Button onClick={handleGoClick}>GO!</Button>
+            </Link>
           </div>
         </div>
       </div>

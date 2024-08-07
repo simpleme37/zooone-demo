@@ -26,7 +26,9 @@ export default function Intro1() {
             卻都沒來上學，他們發生了什麼事情呢？雲豹老師很擔心，希望我們去他們的家看看。
           </p>
           <div className={styles.button_container}>
-            <Button href="/intro2">GO!</Button>
+            <Link href="/intro2">
+              <Button>GO!</Button>
+            </Link>
           </div>
         </div>
       </div>

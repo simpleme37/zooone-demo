@@ -45,9 +45,8 @@ body {
   line-height: 1.6;
   background-color: #f8f8f8;
   color: #333;
-}
-
-.container {
-  padding: 16px;
-  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }

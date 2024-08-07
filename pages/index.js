@@ -21,7 +21,9 @@ export default function Home() {
         <div className={styles.logo}>台北市立動物園</div>
         <div className={styles.title}>動物同學會</div>
         <div className={styles.button_container}>
-          <Button href="/nickname">開始遊戲</Button>
+          <Link href="/nickname">
+            <Button>開始遊戲</Button>
+          </Link>
         </div>
       </div>
     </>

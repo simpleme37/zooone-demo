@@ -1,13 +1,31 @@
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/home.module.css";
-import AnimalCard from "@/components/animal_card";
+import AnimalCard from "../components/animalCard";
 import levels from "../data/levels";
+import { useState, useEffect } from "react";
 
 export default function Main() {
-  console.log("data:", levels);
-  const animals = Object.values(levels);
-  console.log(animals);
+  // console.log("data:", levels);
+  const [animals, setAnimals] = useState();
+
+  // 從 local storage 中取得關卡狀態，並更新 animals 資料
+  useEffect(() => {
+    // 取得 local storage 中的資料
+    const savedLevels = JSON.parse(localStorage.getItem("levels")) || {};
+    const updatedAnimals = Object.keys(levels).map((key, index) => ({
+      ...levels[key],
+      isLocked: savedLevels[key]?.isLocked ?? true,
+      level: key,
+    }));
+    setAnimals(updatedAnimals);
+    console.log(updatedAnimals);
+  }, []);
+
+  if (!animals) {
+    // 在 animals 未定義之前顯示加載指示器或其他占位內容
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
@@ -22,22 +40,32 @@ export default function Main() {
         <div className={styles.card_container_bg}>
           <div className={styles.main_title}>台灣動物區</div>
           <div className={styles.animal_wrapper}>
-            {animals
-              .filter((animal) => animal.group === "A")
-              .map((animal, index) => (
-                <AnimalCard key={index} animal={animal} />
-              ))}
+            {animals &&
+              animals
+                .filter((animal) => animal.group === "A")
+                .map((animal, index) => (
+                  <AnimalCard
+                    key={index}
+                    animal={animal}
+                    level={`level${index + 1}`}
+                  />
+                ))}
           </div>
         </div>
         {/* 熱帶雨林區 */}
         <div className={styles.card_container_bg}>
           <div className={styles.main_title}>熱帶雨林區</div>
           <div className={styles.animal_wrapper}>
-            {animals
-              .filter((animal) => animal.group === "B")
-              .map((animal, index) => (
-                <AnimalCard key={index} animal={animal} />
-              ))}
+            {animals &&
+              animals
+                .filter((animal) => animal.group === "B")
+                .map((animal, index) => (
+                  <AnimalCard
+                    key={animal.level}
+                    animal={animal}
+                    level={animal.level}
+                  />
+                ))}
           </div>
         </div>
       </div>

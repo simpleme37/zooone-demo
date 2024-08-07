@@ -1,6 +1,8 @@
 /* 針對所有設備的基本樣式 */
 .container {
   width: 100svw;
+  max-width: 375px;
+  max-height: 667px;
   height: 100svh;
   padding: 24px;
   background-color: #ffd280;
@@ -8,17 +10,6 @@
   flex-direction: column;
   /* justify-content: space-between; */
   justify-content: center;
-}
-
-.container_nickname {
-  width: 100svw;
-  height: 100svh;
-  padding: 24px;
-  background-color: #ffd280;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .title {
@@ -234,8 +225,4 @@
   left: 50%;
   transform: translate(-50%);
   filter: drop-shadow(0 0 4px white);
-}
-
-/* 媒體查詢：針對螢幕寬度小於等於 640px 的設備 */
-@media (min-width: 768px) {
 }

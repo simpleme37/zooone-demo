@@ -25,7 +25,9 @@ export default function Intro2() {
           <li>個展區關卡謎底解開後，將答案輸入各關卡答案欄位。</li>
         </ul>
         <div className={styles.button_container}>
-          <Button href="/main">OK!</Button>
+          <Link href="/main">
+            <Button>OK!</Button>
+          </Link>
         </div>
       </div>
     </>

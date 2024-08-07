@@ -2,11 +2,13 @@
 .container {
   width: 100svw;
   height: 100svh;
-  padding: 48px;
+  padding: 32px;
   background-color: #ffd280;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  position: static;
 }
 
 .card {
@@ -22,19 +24,17 @@
 .hint_container {
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 40px;
-  left: -24px;
-  gap: 8px;
+  gap: 4px;
   cursor: pointer;
 }
 
 .hint {
   background-color: #b5ff9c;
   writing-mode: vertical-rl;
-  padding: 8px 0;
+  padding: 8px 2px 8px 2px;
   border-radius: 12px 0 0 12px;
   border: 1px solid white;
+  cursor: pointer;
 }
 
 .card_title {
@@ -42,11 +42,12 @@
   font-size: 20px;
 }
 
-.card_paragraph {
+/* custom 內容框框 */
+.card_main_container {
   color: white;
   font-weight: 200;
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .guide {
@@ -54,12 +55,11 @@
   background-color: #ffd7d1;
   border-radius: 8px;
   margin-bottom: 24px;
+  color: #6b6b6b;
 }
 
 .input_btn_wrapper {
   display: flex;
-  align-items: center;
-  margin-bottom: 20px;
   position: relative;
   height: 48px;
 }
@@ -72,6 +72,7 @@
   width: 100%;
   border-radius: 40px;
   padding: 0 96px 0 16px;
+  font-size: 1rem;
 }
 
 .input_btn_wrapper button {
@@ -82,6 +83,7 @@
 }
 
 .bg_circle {
+  position: absolute;
   background-color: #e5e5e5;
   border: 3px solid white;
   border-radius: 50px;
@@ -90,4 +92,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  top: -20px;
+  left: 20;
 }
