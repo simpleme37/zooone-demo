@@ -1,0 +1,93 @@
+/* 針對所有設備的基本樣式 */
+.container {
+  width: 100svw;
+  height: 100svh;
+  padding: 48px;
+  background-color: #ffd280;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card {
+  background-color: #ffb3a8;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.hint_container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 40px;
+  left: -24px;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.hint {
+  background-color: #b5ff9c;
+  writing-mode: vertical-rl;
+  padding: 8px 0;
+  border-radius: 12px 0 0 12px;
+  border: 1px solid white;
+}
+
+.card_title {
+  text-align: center;
+  font-size: 20px;
+}
+
+.card_paragraph {
+  color: white;
+  font-weight: 200;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.guide {
+  padding: 8px;
+  background-color: #ffd7d1;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.input_btn_wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+  height: 48px;
+}
+
+.input_btn_wrapper input {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  border-radius: 40px;
+  padding: 0 96px 0 16px;
+}
+
+.input_btn_wrapper button {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.bg_circle {
+  background-color: #e5e5e5;
+  border: 3px solid white;
+  border-radius: 50px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
