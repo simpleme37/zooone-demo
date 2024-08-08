@@ -38,57 +38,62 @@ export default function Level({ level }) {
 
   return (
     <>
-      <BackButton to="/main" />
       <div className={styles.container}>
-        <div className={styles.hint_container}>
-          <Link href={`/hint/${level}-1`}>
-            <span className={styles.hint}>提示一</span>
-          </Link>
-          <Link href={`/hint/${level}-2`}>
-            <span className={styles.hint}>提示二</span>
-          </Link>
-          <Link href={`/hint/${level}-3`}>
-            <span className={styles.hint}>提示三</span>
-          </Link>
-        </div>
+        {/* 返回鍵 */}
+        <BackButton to="/main" />
+        {/* 主要內容 */}
         <div className={styles.card}>
-          {/* 主要內容 */}
-          <div className={styles.content}>
-            <div className={styles.bg_circle}>
-              <Image
-                src={levelData.backgroundImage}
-                width={50}
-                height={50}
-                alt="image_animal"
-              ></Image>
-            </div>
-            <p className={styles.card_title}>{levelData.name}</p>
-            <div className={styles.card_main_container}>
-              {levelData.guide}
-              <div className={styles.guide}>
+          {/* paragraph 和 guide */}
+          <div className={styles.paragraph_container}>
+            <div className={styles.content}>
+              <div className={styles.bg_circle}>
                 <Image
-                  src="/icon_bulb.svg"
-                  alt="bulb"
-                  width={40}
-                  height={40}
-                  className={styles.bulb}
+                  src={levelData.backgroundImage}
+                  width={50}
+                  height={50}
+                  alt="image_animal"
                 ></Image>
-                <p>{levelData.guide_sm}</p>
+              </div>
+              <p className={styles.card_title}>{levelData.name}</p>
+              <div className={styles.card_main_container}>
+                {levelData.guide}
+                <div className={styles.guide}>
+                  <Image
+                    src="/icon_bulb.svg"
+                    alt="bulb"
+                    width={40}
+                    height={40}
+                    className={styles.bulb}
+                  ></Image>
+                  <p>{levelData.guide_sm}</p>
+                </div>
               </div>
             </div>
+            {/* 輸入框 */}
+            <div className={styles.input_btn_wrapper}>
+              <input
+                type="text"
+                id="answer"
+                name="answer"
+                value={answer}
+                placeholder="請在此輸入答案"
+                // 獲取 input 值
+                onChange={(e) => setAnswer(e.target.value)}
+              />
+              <Button onClick={handleCheckAnswer}>GO!</Button>
+            </div>
           </div>
-          {/* 輸入框 */}
-          <div className={styles.input_btn_wrapper}>
-            <input
-              type="text"
-              id="answer"
-              name="answer"
-              value={answer}
-              placeholder="請在此輸入答案"
-              // 獲取 input 值
-              onChange={(e) => setAnswer(e.target.value)}
-            />
-            <Button onClick={handleCheckAnswer}>GO!</Button>
+          {/* hint 標籤 */}
+          <div className={styles.hint_container}>
+            <Link href={`/hint/${level}-1`}>
+              <span className={styles.hint}>提示一</span>
+            </Link>
+            <Link href={`/hint/${level}-2`}>
+              <span className={styles.hint}>提示二</span>
+            </Link>
+            <Link href={`/hint/${level}-3`}>
+              <span className={styles.hint}>提示三</span>
+            </Link>
           </div>
         </div>
         {/* 錯誤彈窗 */}

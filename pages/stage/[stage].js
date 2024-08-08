@@ -13,7 +13,7 @@ export default function StagePage() {
 
   // 在 levelData 還未加載時返回 null 或顯示加載指示器
   if (!levelData) {
-    return <p>加載中...</p>;
+    return <p>loading...</p>;
   }
 
   return (

@@ -48,42 +48,43 @@ export default function StagePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.container}>
-        {/* 返回鍵 */}
-        <BackButton to="/intro2" />
-        <div></div>
-        {/* 相機 */}
-        {/* capturedImage 為空的時候 */}
-        {!capturedImage && (
-          <Webcam
-            audio={false}
-            ref={webcamRef}
-            screenshotFormat="image/jpeg"
-            className={styles.webcam}
-            videoConstraints={videoConstraints}
-          />
-        )}
-        {/* 裝飾 */}
-        <div className={styles.title}>動物同學會</div>
-        <Image
-          src={`${levelData.backgroundImage}`}
-          alt="deco"
-          width={120}
-          height={120}
-          className={styles.deco}
-        ></Image>
-        {/* 按鍵 */}
-        <div className={styles.button_container}>
-          {!capturedImage ? (
-            <Button onClick={capture}>拍攝</Button>
-          ) : (
-            <>
-              <Button onClick={takeAgain}>再拍一次</Button>
-              <Link href="/main">
-                <Button>OK!</Button>
-              </Link>
-            </>
+        {/* 主要內容 */}
+        <div>
+          {/* 相機 */}
+          {/* capturedImage 為空的時候 */}
+          {!capturedImage && (
+            <Webcam
+              audio={false}
+              ref={webcamRef}
+              screenshotFormat="image/jpeg"
+              className={styles.webcam}
+              videoConstraints={videoConstraints}
+            />
           )}
+          {/* 裝飾 */}
+          <div className={styles.title}>動物同學會</div>
+          <Image
+            src={`${levelData.backgroundImage}`}
+            alt="deco"
+            width={120}
+            height={120}
+            className={styles.deco}
+          ></Image>
+          {/* 按鍵 */}
+          <div className={styles.button_container}>
+            {!capturedImage ? (
+              <Button onClick={capture}>拍攝</Button>
+            ) : (
+              <>
+                <Button onClick={takeAgain}>再拍一次</Button>
+                <Link href="/main">
+                  <Button>OK!</Button>
+                </Link>
+              </>
+            )}
+          </div>
         </div>
+
         {/* 展示相片 */}
         {capturedImage && (
           <div className={styles.captured_image_container}>
@@ -95,6 +96,9 @@ export default function StagePage() {
             />
           </div>
         )}
+
+        {/* 返回鍵 */}
+        <BackButton to="/main" className={styles.back_button} />
       </div>
     </>
   );

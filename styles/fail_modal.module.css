@@ -30,3 +30,11 @@
 .sm_text {
   font-size: 12px;
 }
+
+@media only screen and (max-width: 480px) {
+  .overlay {
+    width: 100vw;
+    height: 100vh;
+    max-width: 390px;
+  }
+}

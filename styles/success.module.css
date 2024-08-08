@@ -27,3 +27,11 @@
   align-self: center;
   margin-bottom: 12px;
 }
+
+@media only screen and (max-width: 480px) {
+  .container {
+    width: 100vw;
+    height: 100vh;
+    max-width: 390px;
+  }
+}

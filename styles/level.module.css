@@ -10,7 +10,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: static;
+  position: relative;
+  z-index: 0;
 }
 
 .card {
@@ -23,21 +24,30 @@
   position: relative;
 }
 
+.paragraph_container {
+  position: relative;
+}
+
 .hint_container {
+  position: absolute;
   display: flex;
   flex-direction: column;
   gap: 4px;
   cursor: pointer;
+  top: 24;
+  left: -22px;
+  z-index: -1;
 }
 
 .hint {
   background-color: #b5ff9c;
   writing-mode: vertical-rl;
-  padding: 8px 2px 8px 2px;
+  padding: 8px 0 8px 0;
   border-radius: 12px 0 0 12px;
   border: 1px solid white;
   border-right: none;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .card_title {
@@ -108,4 +118,13 @@
 .bulb {
   background-color: #fffed1;
   border-radius: 50%;
+}
+
+/* 手機版 container */
+@media only screen and (max-width: 480px) {
+  .container {
+    width: 100vw;
+    height: 100vh;
+    max-width: 390px;
+  }
 }
