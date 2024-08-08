@@ -1,6 +1,8 @@
 .container {
   width: 100svw;
   height: 100svh;
+  max-width: 375px;
+  max-height: 667px;
   padding: 24px;
   background-color: #ffd280;
   display: flex;

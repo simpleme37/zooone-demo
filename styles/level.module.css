@@ -2,6 +2,8 @@
 .container {
   width: 100svw;
   height: 100svh;
+  max-width: 375px;
+  max-height: 667px;
   padding: 32px;
   background-color: #ffd280;
   display: flex;
@@ -34,6 +36,7 @@
   padding: 8px 2px 8px 2px;
   border-radius: 12px 0 0 12px;
   border: 1px solid white;
+  border-right: none;
   cursor: pointer;
 }
 
@@ -42,20 +45,26 @@
   font-size: 20px;
 }
 
-/* custom 內容框框 */
 .card_main_container {
   color: white;
   font-weight: 200;
   margin-top: 20px;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .guide {
-  padding: 8px;
+  padding: 12px;
   background-color: #ffd7d1;
   border-radius: 8px;
   margin-bottom: 24px;
-  color: #6b6b6b;
+  color: #666666;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  font-size: 14px;
 }
 
 .input_btn_wrapper {
@@ -94,4 +103,9 @@
   align-items: center;
   top: -20px;
   left: 20;
+}
+
+.bulb {
+  background-color: #fffed1;
+  border-radius: 50%;
 }

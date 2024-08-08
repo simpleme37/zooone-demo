@@ -4,9 +4,10 @@
   border: white 2px solid;
   border-left: none;
   padding: 8px 16px;
-  top: 20px;
+  top: 150px;
   border-radius: 0 50px 50px 0;
   font-size: 14px;
   color: white;
   cursor: pointer;
+  z-index: 1;
 }

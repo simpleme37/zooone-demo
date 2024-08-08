@@ -1,29 +1,29 @@
 import Head from "next/head";
-import Link from "next/link";
 import styles from "../styles/home.module.css";
-import AnimalCard from "../components/animalCard";
-import levels from "../data/levels";
+import AnimalCard from "../components/card-animal";
+import levels from "../data/levelsData";
 import { useState, useEffect } from "react";
+import BackButton from "../components/btn-back";
 
 export default function Main() {
-  // console.log("data:", levels);
-  const [animals, setAnimals] = useState();
+  const [animals, setAnimals] = useState([]);
 
   // 從 local storage 中取得關卡狀態，並更新 animals 資料
   useEffect(() => {
     // 取得 local storage 中的資料
     const savedLevels = JSON.parse(localStorage.getItem("levels")) || {};
-    const updatedAnimals = Object.keys(levels).map((key, index) => ({
-      ...levels[key],
-      isLocked: savedLevels[key]?.isLocked ?? true,
-      level: key,
+    // 更新 animals 資料
+    const updatedAnimals = levels.map((level) => ({
+      ...level,
+      isLocked: savedLevels[level.stage]?.isLocked ?? true,
     }));
+
     setAnimals(updatedAnimals);
-    console.log(updatedAnimals);
+    // console.log(updatedAnimals);
   }, []);
 
   if (!animals) {
-    // 在 animals 未定義之前顯示加載指示器或其他占位內容
+    // 在 animals 未定義之前顯示
     return <div>Loading...</div>;
   }
 
@@ -35,6 +35,8 @@ export default function Main() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {/* 按鈕們 */}
+      <BackButton to="/intro2" />
       <div className={styles.container}>
         {/* 台灣動物區 */}
         <div className={styles.card_container_bg}>
@@ -43,12 +45,8 @@ export default function Main() {
             {animals &&
               animals
                 .filter((animal) => animal.group === "A")
-                .map((animal, index) => (
-                  <AnimalCard
-                    key={index}
-                    animal={animal}
-                    level={`level${index + 1}`}
-                  />
+                .map((animal) => (
+                  <AnimalCard key={animal.stage} animal={animal} />
                 ))}
           </div>
         </div>
@@ -59,22 +57,12 @@ export default function Main() {
             {animals &&
               animals
                 .filter((animal) => animal.group === "B")
-                .map((animal, index) => (
-                  <AnimalCard
-                    key={animal.level}
-                    animal={animal}
-                    level={animal.level}
-                  />
+                .map((animal) => (
+                  <AnimalCard key={animal.stage} animal={animal} />
                 ))}
           </div>
         </div>
       </div>
-      <button className={styles.button_music}></button>
-      <button>幫助</button>
-      <Link href="/main">
-        <button>返回</button>
-      </Link>
-      <div>Modal</div>
     </>
   );
 }

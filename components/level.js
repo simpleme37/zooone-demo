@@ -1,47 +1,53 @@
 import { useState } from "react";
-import Head from "next/head";
 import styles from "../styles/level.module.css";
 import Image from "next/image";
 import Button from "../components/button";
 import Link from "next/link";
-import levels from "../data/levels";
+import levels from "../data/levelsData";
 import { useRouter } from "next/router";
 import BackButton from "../components/btn-back";
+import FailModal from "./modal-fail";
 
 export default function Level({ level }) {
   const router = useRouter();
-  const levelData = levels[level];
+  const levelData = levels[level - 1];
   const [answer, setAnswer] = useState("");
   const [failModal, setFailModal] = useState(false);
 
+  // console.log(levelData);
+  // console.log(levelData.answer);
+
   const handleCheckAnswer = () => {
-    // console.log(levelData.answer);
     if (answer.trim() === levelData.answer) {
       // 如果答案正確，解鎖
       const savedLevels = JSON.parse(localStorage.getItem("levels")) || {};
+      // 初始化 savedLevels[level] 如果它不存在
+      if (!savedLevels[level]) {
+        savedLevels[level] = {};
+      }
+      // 將該等級 isLocked屬性設成 false
       savedLevels[level].isLocked = false;
       localStorage.setItem("levels", JSON.stringify(savedLevels));
-      // 並且跳轉回main
-      router.push("/main");
+      // 並且跳轉到 success 頁面
+      router.push(`/success/${level}`);
     } else {
       // 如果答案錯誤，跳出錯誤Modal
-      alert("答案錯誤");
       setFailModal(true);
     }
   };
 
   return (
     <>
-      <BackButton />
+      <BackButton to="/main" />
       <div className={styles.container}>
         <div className={styles.hint_container}>
-          <Link href={`/hint/${levelData.stage}-1`}>
+          <Link href={`/hint/${level}-1`}>
             <span className={styles.hint}>提示一</span>
           </Link>
-          <Link href={`/hint/${levelData.stage}-2`}>
+          <Link href={`/hint/${level}-2`}>
             <span className={styles.hint}>提示二</span>
           </Link>
-          <Link href={`/hint/${levelData.stage}-3`}>
+          <Link href={`/hint/${level}-3`}>
             <span className={styles.hint}>提示三</span>
           </Link>
         </div>
@@ -58,8 +64,17 @@ export default function Level({ level }) {
             </div>
             <p className={styles.card_title}>{levelData.name}</p>
             <div className={styles.card_main_container}>
-              看來要先把中藥舖動物製的中藥材下架抹除，才能找出吸引小山走出迷宮的方式了。
-              <div className={styles.guide}>先去找找中藥舖的看板在哪裡吧！</div>
+              {levelData.guide}
+              <div className={styles.guide}>
+                <Image
+                  src="/icon_bulb.svg"
+                  alt="bulb"
+                  width={40}
+                  height={40}
+                  className={styles.bulb}
+                ></Image>
+                <p>{levelData.guide_sm}</p>
+              </div>
             </div>
           </div>
           {/* 輸入框 */}
@@ -75,16 +90,9 @@ export default function Level({ level }) {
             />
             <Button onClick={handleCheckAnswer}>GO!</Button>
           </div>
-          {/* 錯誤彈窗 */}
-          {failModal && (
-            <div className={styles.fail_modal}>
-              <div className={styles.fail_modal_content}>
-                <p>答案錯誤，請再試一次！</p>
-                <button onClick={() => setFailModal(false)}>關閉</button>
-              </div>
-            </div>
-          )}
         </div>
+        {/* 錯誤彈窗 */}
+        {failModal && <FailModal onClose={() => setFailModal(false)} />}
       </div>
     </>
   );

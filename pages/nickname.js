@@ -8,23 +8,31 @@ import Link from "next/link";
 export default function Nickname() {
   // 暱稱狀態
   const [nickname, setNickname] = useState("");
-  // 提交、setItem
+  // checkbox狀態
+  const [isChecked, setIsChecked] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleCheckboxChange = (e) => {
+    setIsChecked(e.target.checked);
+    if (e.target.checked) {
+      setError(""); // 清除錯誤訊息
+    }
+  };
+
+  // 提交檢查、setItem
   const handleGoClick = (e) => {
     if (nickname.trim() === "") {
       e.preventDefault();
-      alert("請輸入遊戲暱稱");
+      setError("請輸入遊戲暱稱");
       return;
     }
+    if (!isChecked) {
+      e.preventDefault();
+      setError("您尚未同意使用者條款與隱私權政策");
+      return;
+    }
+
     localStorage.setItem("nickname", nickname);
-    localStorage.setItem(
-      "levels",
-      JSON.stringify({
-        level1: { isLocked: true },
-        level2: { isLocked: true },
-        level3: { isLocked: true },
-        level4: { isLocked: true },
-      })
-    );
   };
 
   return (
@@ -70,9 +78,17 @@ export default function Nickname() {
           </div>
 
           {/* checkbox */}
-          <div className={styles.checkbox_wrapper}>
-            <input type="checkbox" name="" id="toggleIsChecked" />
-            您同意<span>使用者條款</span>與<span>隱私權政策</span>
+          <div className={styles.checkbox_container}>
+            <div className={styles.checkbox_wrapper}>
+              <input
+                type="checkbox"
+                id="toggleIsChecked"
+                onClick={handleCheckboxChange}
+              />
+              您同意<span className={styles.term}>使用者條款</span>與
+              <span className={styles.term}>隱私權政策</span>
+            </div>
+            <p className={styles.alert}>{error}</p>
           </div>
 
           {/* button */}

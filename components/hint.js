@@ -4,7 +4,9 @@ import styles from "../styles/hint.module.css";
 import Button from "./button";
 import Link from "next/link";
 
-export default function Hint({ title, question, hintContent }) {
+export default function Hint({ title, question, hintContent, stage }) {
+  const router = useRouter();
+
   const [showHint, setShowHint] = useState(false);
 
   // 按下 YES
@@ -13,7 +15,6 @@ export default function Hint({ title, question, hintContent }) {
   };
 
   // 按下 NO
-  const router = useRouter();
   const handleBack = () => {
     router.back();
   };
@@ -39,7 +40,7 @@ export default function Hint({ title, question, hintContent }) {
           <div className={styles.hint_container}>
             {hintContent}
             <div className={styles.button_container}>
-              <Link href="/level1">
+              <Link href={`/stage/${stage}`}>
                 <Button>OK!</Button>
               </Link>
             </div>

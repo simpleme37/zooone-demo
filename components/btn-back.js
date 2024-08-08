@@ -1,12 +1,11 @@
 import { useRouter } from "next/router";
 import styles from "../styles/button.module.css";
 
-export default function BackButton() {
+export default function BackButton({ to }) {
   const router = useRouter();
 
   const handleBack = () => {
-    // router.back();
-    router.push("/main");
+    router.push(to);
   };
 
   return (

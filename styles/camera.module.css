@@ -1,0 +1,58 @@
+/* 針對所有設備的基本樣式 */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 100svw;
+  max-width: 375px;
+  max-height: 667px;
+  height: 100svh;
+  /* padding: 24px; */
+  background-color: #ffd280;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+  position: absolute;
+  color: white;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 24px 0;
+  text-align: center;
+  text-wrap: nowrap;
+}
+
+.button_container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.filter {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 72px;
+  z-index: 2;
+}
+
+.back_button {
+  position: absolute;
+  text-wrap: nowrap;
+  top: -120px;
+  z-index: 2;
+}
+
+.captured_image_container {
+  position: absolute;
+}

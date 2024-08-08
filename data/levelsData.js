@@ -1,9 +1,12 @@
-const levels = {
-  level1: {
+const levels = [
+  {
     stage: 1,
     group: "A",
     name: "穿山甲",
     backgroundImage: "/img_animal1.png",
+    guide:
+      "看來要先把中藥鋪動物製的中藥材下架抹除，才能找出吸引小山走出迷宮的方式了。",
+    guide_sm: "先去找找中藥鋪的看板在牆裡吧！",
     questions: [
       {
         question: "把中藥鋪動物製的藥材下架抹除怎麼做?",
@@ -20,11 +23,14 @@ const levels = {
     ],
     answer: "不用動物藥材",
   },
-  level2: {
+  {
     stage: 2,
     group: "A",
     name: "歐亞水獺",
     backgroundImage: "/img_animal2.png",
+    guide:
+      "你可以把歐亞水獺、海獺、河狸身上的代號和適合新棲息地的環境代號連線嗎？",
+    guide_sm: "或許就能找出幫助小獺打造新家環境的好方法喔！",
     questions: [
       {
         question: "問題1",
@@ -41,11 +47,13 @@ const levels = {
     ],
     answer: "正確答案2",
   },
-  level3: {
+  {
     stage: 3,
     group: "B",
     name: "紅毛猩猩",
     backgroundImage: "/img_animal3.png",
+    guide: "小猩的家旁邊樹都被砍倒，我們在這裡遇到了小猩的朋友-笑翠鳥。",
+    guide_sm: "現場看板上留有森林分布圖，可以向笑翠鳥問消息。",
     questions: [
       {
         question: "問題1",
@@ -62,11 +70,14 @@ const levels = {
     ],
     answer: "正確答案3",
   },
-  level4: {
+  {
     stage: 4,
     group: "B",
     name: "馬來貘",
     backgroundImage: "/img_animal4.png",
+    guide: "小貘家附近的樹地被破壞了，小貘很有可能去新的森林找尋居住的地方了。",
+    guide_sm:
+      "現場看板上似乎還留有小貘的腳印，我們跟著小貘的腳印找出他前往的一座森林！這樣或許就可以找出幫助小貘建立新家的方式了！",
     questions: [
       {
         question: "問題1",
@@ -83,6 +94,6 @@ const levels = {
     ],
     answer: "正確答案4",
   },
-};
+];
 
 export default levels;

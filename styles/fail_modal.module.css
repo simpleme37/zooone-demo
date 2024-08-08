@@ -1,0 +1,32 @@
+.overlay {
+  position: fixed;
+  width: 100svw;
+  height: 100svh;
+  max-width: 375px;
+  max-height: 667px;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.guide_text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  font-weight: 200;
+}
+
+.sm_text {
+  font-size: 12px;
+}

@@ -18,7 +18,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.container}>
-        <div className={styles.logo}>台北市立動物園</div>
+        <div className={styles.logo}>動物園</div>
         <div className={styles.title}>動物同學會</div>
         <div className={styles.button_container}>
           <Link href="/nickname">
