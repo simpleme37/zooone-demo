@@ -17,6 +17,9 @@ export default function Success({ level }) {
       <p className={styles.congrat}>恭喜通關</p>
       <p className={styles.congrat}>Level {level}</p>
       <div className={styles.button_container}>
+        <Link href={`/camera/${level}`}>
+          <Button>合照</Button>
+        </Link>
         <Link href="/main">
           <Button>OK!</Button>
         </Link>

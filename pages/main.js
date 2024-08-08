@@ -35,31 +35,34 @@ export default function Main() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* 按鈕們 */}
-      <BackButton to="/intro2" />
       <div className={styles.container}>
-        {/* 台灣動物區 */}
-        <div className={styles.card_container_bg}>
-          <div className={styles.main_title}>台灣動物區</div>
-          <div className={styles.animal_wrapper}>
-            {animals &&
-              animals
-                .filter((animal) => animal.group === "A")
-                .map((animal) => (
-                  <AnimalCard key={animal.stage} animal={animal} />
-                ))}
+        {/* 返回鍵 */}
+        <BackButton to="/intro2" />
+        {/* 主要內容 */}
+        <div>
+          {/* 台灣動物區 */}
+          <div className={styles.card_container_bg}>
+            <div className={styles.main_title}>台灣動物區</div>
+            <div className={styles.animal_wrapper}>
+              {animals &&
+                animals
+                  .filter((animal) => animal.group === "A")
+                  .map((animal) => (
+                    <AnimalCard key={animal.stage} animal={animal} />
+                  ))}
+            </div>
           </div>
-        </div>
-        {/* 熱帶雨林區 */}
-        <div className={styles.card_container_bg}>
-          <div className={styles.main_title}>熱帶雨林區</div>
-          <div className={styles.animal_wrapper}>
-            {animals &&
-              animals
-                .filter((animal) => animal.group === "B")
-                .map((animal) => (
-                  <AnimalCard key={animal.stage} animal={animal} />
-                ))}
+          {/* 熱帶雨林區 */}
+          <div className={styles.card_container_bg}>
+            <div className={styles.main_title}>熱帶雨林區</div>
+            <div className={styles.animal_wrapper}>
+              {animals &&
+                animals
+                  .filter((animal) => animal.group === "B")
+                  .map((animal) => (
+                    <AnimalCard key={animal.stage} animal={animal} />
+                  ))}
+            </div>
           </div>
         </div>
       </div>

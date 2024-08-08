@@ -1,27 +1,24 @@
-import React from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
-import Level from "../../components/level";
 import levels from "../../data/levelsData";
 import styles from "../../styles/camera.module.css";
-import Webcam from "react-webcam";
 import Image from "next/image";
 import Button from "../../components/button";
 import BackButton from "../../components/btn-back";
-import { useRef } from "react";
-import { useState } from "react";
+import React, { useState, useRef } from "react";
+import Webcam from "react-webcam";
+import Link from "next/link";
 
 export default function StagePage() {
   const router = useRouter();
-  const { stage } = router.query;
+  const { camera } = router.query;
   const webcamRef = useRef(null);
   const [capturedImage, setCapturedImage] = useState(null);
 
   // 查找對應的 stage
-  const levelData = levels.find((level) => level.stage === Number(stage));
+  const levelData = levels.find((level) => level.stage === Number(camera));
   // console.log(levelData);
 
-  // 在 levelData 還未加載時返回 null 或顯示加載指示器
   if (!levelData) {
     return <p>加載中...</p>;
   }
@@ -38,6 +35,10 @@ export default function StagePage() {
     console.log(imageSrc);
   };
 
+  const takeAgain = () => {
+    setCapturedImage(null);
+  };
+
   return (
     <>
       <Head>
@@ -47,33 +48,42 @@ export default function StagePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.container}>
+        {/* 返回鍵 */}
+        <BackButton to="/intro2" />
+        <div></div>
         {/* 相機 */}
-        <Webcam
-          audio={false}
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-          className={styles.webcam}
-          videoConstraints={videoConstraints}
-        />
-
+        {/* capturedImage 為空的時候 */}
+        {!capturedImage && (
+          <Webcam
+            audio={false}
+            ref={webcamRef}
+            screenshotFormat="image/jpeg"
+            className={styles.webcam}
+            videoConstraints={videoConstraints}
+          />
+        )}
         {/* 裝飾 */}
+        <div className={styles.title}>動物同學會</div>
         <Image
           src={`${levelData.backgroundImage}`}
-          alt="filter"
+          alt="deco"
           width={120}
           height={120}
-          className={styles.filter}
+          className={styles.deco}
         ></Image>
-
         {/* 按鍵 */}
         <div className={styles.button_container}>
-          <Button onClick={capture}>拍攝</Button>
+          {!capturedImage ? (
+            <Button onClick={capture}>拍攝</Button>
+          ) : (
+            <>
+              <Button onClick={takeAgain}>再拍一次</Button>
+              <Link href="/main">
+                <Button>OK!</Button>
+              </Link>
+            </>
+          )}
         </div>
-        <div className={styles.title}>動物同學會</div>
-        <div className={styles.back_button}>
-          <BackButton to="/main" className={styles.back_button} />
-        </div>
-
         {/* 展示相片 */}
         {capturedImage && (
           <div className={styles.captured_image_container}>

@@ -5,10 +5,10 @@ import Success from "../../components/success";
 
 export default function StagePage() {
   const router = useRouter();
-  const { stage } = router.query;
+  const { success } = router.query;
 
   // 查找對應的 stage
-  const levelData = levels.find((level) => level.stage === Number(stage));
+  const levelData = levels.find((level) => level.stage === Number(success));
   console.log(levelData);
 
   // 在 levelData 還未加載時返回 null 或顯示加載指示器

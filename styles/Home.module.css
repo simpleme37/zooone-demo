@@ -8,7 +8,6 @@
   background-color: #ffd280;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   justify-content: center;
   position: relative;
 }
@@ -61,6 +60,7 @@
   border-radius: 50px;
   cursor: pointer;
   letter-spacing: 0.2rem;
+  height: 100%;
 }
 
 .button:hover {

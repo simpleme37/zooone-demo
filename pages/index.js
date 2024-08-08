@@ -1,12 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import Link from "next/link";
 import styles from "../styles/home.module.css";
-
-import Button from "@/components/Button";
-
-const inter = Inter({ subsets: ["latin"] });
+import Button from "../components/button";
 
 export default function Home() {
   return (

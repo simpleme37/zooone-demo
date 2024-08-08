@@ -1,15 +1,15 @@
 import { useRouter } from "next/router";
-import styles from "../styles/button.module.css";
+import styles from "../styles/back_button.module.css";
 
 export default function BackButton({ to }) {
   const router = useRouter();
 
-  const handleBack = () => {
+  const handleTo = () => {
     router.push(to);
   };
 
   return (
-    <button onClick={handleBack} className={styles.back_button}>
+    <button onClick={handleTo} className={styles.back_button}>
       返回
     </button>
   );
