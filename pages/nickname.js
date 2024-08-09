@@ -15,7 +15,7 @@ export default function Nickname() {
   const handleCheckboxChange = (e) => {
     setIsChecked(e.target.checked);
     if (e.target.checked) {
-      setError(""); // 清除錯誤訊息
+      setError("");
     }
   };
 

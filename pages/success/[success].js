@@ -11,7 +11,6 @@ export default function StagePage() {
   const levelData = levels.find((level) => level.stage === Number(success));
   console.log(levelData);
 
-  // 在 levelData 還未加載時返回 null 或顯示加載指示器
   if (!levelData) {
     return <p>加載中...</p>;
   }
